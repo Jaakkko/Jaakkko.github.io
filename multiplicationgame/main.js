@@ -120,7 +120,10 @@ const resultScreen = new State({
     const container = document.querySelector("#resultScreen")
     container.style.display = "block"
     const h2 = container.querySelector("h2")
-    h2.textContent = `You got ${game.score} points!`
+    let highest = localStorage.getItem('highest') ?? game.score.toString()
+    highest = Math.max(parseInt(highest), game.score)
+    h2.textContent = `You got ${game.score} points! High score: ${highest}`
+    localStorage.setItem('highest', highest)
 
     document.querySelector("#restartButton").onclick = function cb() {
       resultScreen.transitionTo(game)
