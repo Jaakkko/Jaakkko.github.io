@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiplication game</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      background-color: #e3e3e6;
+    }
+    * {
+      font-family: 'Jetbrains Mono';
+      font-weight: 700;
+    }
+
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+    }
+
+    label {
+      position: relative;
+      cursor: pointer;
+      width: 120px;
+      height: 120px;
+    }
+
+    label>div {
+      border: 4px solid cornflowerblue;
+      background-color: cornflowerblue;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+      box-sizing: border-box;
+    }
+
+    div>i {
+      font-size: 64px;
+      font-style: normal;
+      color: white;
+      user-select: none;
+    }
+
+    :checked~div {
+      border: 4px solid #4a6eb0;
+      background-color: black;
+    }
+
+    form>div {
+      display: grid;
+      grid-template-columns: repeat(3, 120px);
+      grid-template-rows: repeat(3, 120px);
+      gap: 20px;
+      justify-content: center;
+    }
+
+    h2 {
+      font-size: 48px;
+    }
+
+    button {
+      background-color: cornflowerblue;
+      padding: 16px;
+      font-size: 64px;
+      color: white;
+      border: none;
+    }
+
+    button:disabled {
+      background-color: gray;
+    }
+
+    #progress {
+      background-color: rgb(188, 202, 228);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    #answer {
+      font-size: 100px;
+      text-align: center;
+      border: none;
+      width: 2ch;
+    }
+
+    #answer:focus {
+      outline: none;
+    }
+
+    #answerContainer > input, #answerContainer > h2 {
+      background-color: transparent;
+      font-size: 100px;
+      text-wrap: nowrap;
+      height: fit-content;
+      white-space: break-spaces;
+      margin: 0;
+    }
+
+    #answerContainer {
+      padding-top: 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="checkboxForm" style="display: none;">
+    <h2>Select tables</h2>
+    <div>
+      <label>
+        <input type="checkbox" name="checkbox1">
+        <div><i>1</i></div>
+      </label>
+
+      <label>
+        <input type="checkbox" name="checkbox2">
+        <div><i>2</i></div>
+      </label>
+
+      <label>
+        <input type="checkbox" name="checkbox3">
+        <div><i>3</i></div>
+      </label>
+
+      <label>
+        <input type="checkbox" name="checkbox4">
+        <div><i>4</i></div>
+      </label>
+
+      <label>
+        <input type="checkbox" name="checkbox5">
+        <div><i>5</i></div>
+      </label>
+
+      <label>
+        <input type="checkbox" name="checkbox6">
+        <div><i>6</i></div>
+      </label>
+
+      <label>
+        <input type="checkbox" name="checkbox7">
+        <div><i>7</i></div>
+      </label>
+
+      <label>
+        <input type="checkbox" name="checkbox8">
+        <div><i>8</i></div>
+      </label>
+
+      <label>
+        <input type="checkbox" name="checkbox9">
+        <div><i>9</i></div>
+      </label>
+
+    </div>
+    <button style="display: block; margin: 20px auto; width: calc(360px + 20px*2); font-size: 64px;" type="button">Continue</button>
+  </form>
+  <div id="resultScreen" style="display: none;">
+    <h2></h2>
+    <button id="restartButton">Restart</button>
+    <button id="selectTablesButton">Select tables</button>
+  </div>
+  <div id="game" style="display: none;">
+    <div id="progress"></div>
+    <div id="answerContainer">
+      <h2>6 × 6</h2>
+      <input size="2" type="text" id="answer" maxlength="2" tabindex="0" autocomplete="off" type="tel" pattern="[0-9]+">
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+
+</html>
