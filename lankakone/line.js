@@ -1,5 +1,5 @@
   importScripts(
-    './opencv.js',
+    location.pathname + 'opencv.js',
     'https://cdn.jsdelivr.net/gh/nicolaspanel/numjs@0.15.1/dist/numjs.min.js'
   )
 
