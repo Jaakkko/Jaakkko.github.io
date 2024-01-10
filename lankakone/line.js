@@ -14,7 +14,7 @@ self.onmessage = async (event) => {
   let N_PINS = event.data.N_PINS;
   let MIN_LOOP = 20;
   let MIN_DISTANCE = 20;
-  let LINE_WEIGHT = 20;
+  let LINE_WEIGHT = event.data.LINE_WEIGHT;
   let SCALE = 20;
   let HOOP_DIAMETER = 0.625;
 
@@ -48,7 +48,6 @@ self.onmessage = async (event) => {
   // make grayscale by averaging the RGB channels.
   // extract out the R channel because that's all we need and push graysacle image onto canvas
   R = img_result = nj.ones([IMG_SIZE, IMG_SIZE]).multiply(0xff);
-  console.log(pixels.width, pixels.height, IMG_SIZE)
   var rdata = [];
   for (var y = 0; y < pixels.height; y++) {
     for (var x = 0; x < pixels.width; x++) {
@@ -147,7 +146,6 @@ self.onmessage = async (event) => {
       self.postMessage({ status: `Computing ${progress} %`, accumulated_line_sequence, progress })
       accumulated_line_sequence = []
     }
-    console.log(`${line_sequence.length} / ${MAX_LINES}`)
 
     xs = line_cache_x[best_pin * N_PINS + pin];
     ys = line_cache_y[best_pin * N_PINS + pin];
